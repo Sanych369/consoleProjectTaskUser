@@ -1,0 +1,7 @@
+{
+  "command dropTables": "DROP TABLE if exists TASKS; DROP TABLE if exists PROJECTS; DROP TABLE if exists USERS ;",
+  "command createTable PROJECTS": "CREATE TABLE PROJECTS(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ProjectName TEXT NOT NULL) ;",
+  "command createTable TASKS": "CREATE TABLE TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, TaskName TEXT NOT NULL, Project_ID INTEGER, foreign key(Project_ID) references PROJECTS(ID)) ;",
+  "command createTable USERS": "CREATE TABLE USERS (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, Task_ID INTEGER, foreign key(Task_ID) references TASKS(ID)) ;",
+  "command addUser": "INSERT INTO users (FirstName, LastName) VALUES ('Alex','Kostyrev');"
+}
