@@ -10,9 +10,6 @@ public class TaskServiceImp implements TaskService {
 
     @Override
     public List<Task> getAllTasks() {
-        for (int i = 0; i < taskDAOImp.getAllTasks().size(); i++) {
-            System.out.println(taskDAOImp.getAllTasks().get(i));
-        }
         return taskDAOImp.getAllTasks();
     }
 
@@ -29,5 +26,16 @@ public class TaskServiceImp implements TaskService {
     @Override
     public void assignTaskOnProject(String projectName, String taskName) {
         taskDAOImp.assignTaskOnProject(projectName, taskName);
+    }
+
+    @Override
+    public void printAllTasks() {
+        if (taskDAOImp.getAllTasks().size() != 0) {
+            for (int i = 0; i < taskDAOImp.getAllTasks().size(); i++) {
+                System.out.println(taskDAOImp.getAllTasks().get(i));
+            }
+        } else {
+            System.out.println("Список задач пуст!");
+        }
     }
 }

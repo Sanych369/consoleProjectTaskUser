@@ -10,9 +10,6 @@ public class ProjectServiceImp implements ProjectService {
 
     @Override
     public List<Project> getAllProjects() {
-        for (int i = 0; i < projectDAOImp.getAllProjects().size(); i++) {
-            System.out.println(projectDAOImp.getAllProjects().get(i));
-        }
         return projectDAOImp.getAllProjects();
     }
 
@@ -26,4 +23,14 @@ public class ProjectServiceImp implements ProjectService {
         projectDAOImp.deleteProject(projectName);
     }
 
+    @Override
+    public void printAllProjects() {
+        if (projectDAOImp.getAllProjects().size() != 0) {
+            for (int i = 0; i < projectDAOImp.getAllProjects().size(); i++) {
+                System.out.println(projectDAOImp.getAllProjects().get(i));
+            }
+        } else {
+            System.out.println("Список проектов пуст!");
+        }
+    }
 }

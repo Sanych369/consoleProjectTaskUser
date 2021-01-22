@@ -42,6 +42,8 @@ public class Menu {
                 case "0":
                     stop = true;
                     System.out.println("Приложение закрыто.");
+                default:
+                    break;
             }
         }
     }
@@ -63,7 +65,7 @@ public class Menu {
                 break;
             case "2":
                 System.out.println("Посмотреть проекты: ");
-                projectService.getAllProjects();
+                projectService.printAllProjects();
                 mainMenuOrExit();
                 break;
             case "3":
@@ -72,12 +74,14 @@ public class Menu {
                 String projName = scanner.next();
                 projectService.deleteProject(projName);
                 break;
+            default:
+                break;
         }
 
     }
 
     private void taskMenu() {
-        System.out.println("Меню задачи:\n");
+        System.out.println("Меню задачи:");
         System.out.println("1. Создать задачу");
         System.out.println("2. Посмотреть задачи");
         System.out.println("3. Прекрепить задачу к проекту");
@@ -86,7 +90,7 @@ public class Menu {
 
         switch (choice) {
             case "1":
-                System.out.println("Создать задачу.\n");
+                System.out.println("Создать задачу.");
                 System.out.println("Введите название новой задачи:");
                 String taskNameCreate = scanner.next();
                 taskService.createTask(taskNameCreate);
@@ -102,12 +106,12 @@ public class Menu {
                 }
                 break;
             case "2":
-                System.out.println("Посмотреть задачи.\n");
-                taskService.getAllTasks();
+                System.out.println("Посмотреть задачи.");
+                taskService.printAllTasks();
                 mainMenuOrExit();
                 break;
             case "3":
-                System.out.println("Прикрепить задачу к проекту.\n");
+                System.out.println("Прикрепить задачу к проекту.");
                 System.out.println("Введите имя задачи:");
                 String taskName = scanner.next();
                 System.out.println("Введите имя проекта, к которому прикрепить задачу:");
@@ -115,7 +119,7 @@ public class Menu {
                 taskService.assignTaskOnProject(projectNameAssign, taskName);
                 break;
             case "4":
-                System.out.println("Удалить задачу.\n");
+                System.out.println("Удалить задачу.");
                 System.out.println("Введите название задачи:");
                 String taskNameDelete = scanner.next();
                 taskService.deleteTask(taskNameDelete);
@@ -126,7 +130,7 @@ public class Menu {
     }
 
     private void userMenu() {
-        System.out.println("Меню пользователи:\n");
+        System.out.println("Меню пользователи:");
         System.out.println("1. Создать пользователя");
         System.out.println("2. Посмотреть пользователей");
         System.out.println("3. Назначить пользователю задачу");
@@ -135,7 +139,7 @@ public class Menu {
         String choice = scanner.next();
         switch (choice) {
             case "1":
-                System.out.println("Создать пользователя.\n");
+                System.out.println("Создать пользователя.");
                 System.out.println("Введите имя пользователя:");
                 String userFirstNameCreate = scanner.next();
                 System.out.println("Введите фамилию пользователя:");
@@ -154,12 +158,12 @@ public class Menu {
                 }
                 break;
             case "2":
-                System.out.println("Просмотреть пользователей.\n");
-                userService.getAllUsers();
+                System.out.println("Просмотреть пользователей.");
+                userService.printAllUsers();
                 mainMenuOrExit();
                 break;
             case "3":
-                System.out.println("Назначить пользователю задачу.\n");
+                System.out.println("Назначить пользователю задачу.");
                 System.out.println("Введите имя пользователя:");
                 String userFirstName = scanner.next();
                 System.out.println("Введите фамилию пользователя:");
@@ -169,7 +173,7 @@ public class Menu {
                 userService.assignUserOnTask(userFirstName, userLastName, taskName);
                 break;
             case "4":
-                System.out.println("Удалить пользователя.\n");
+                System.out.println("Удалить пользователя.");
                 System.out.println("Введите имя пользователя:");
                 String userFirstNameDelete = scanner.next();
                 System.out.println("Введите фамилию пользователя:");
@@ -184,7 +188,6 @@ public class Menu {
     private void reportMenu() {
         new ReportService().getReport();
         mainMenuOrExit();
-
     }
 
     private void mainMenuOrExit() {
@@ -193,11 +196,11 @@ public class Menu {
         System.out.println("2. Завершить программу");
         String returnToMenu = scanner.next();
         switch (returnToMenu) {
-            case "1":
-                break;
             case "2":
                 stop = true;
                 System.out.println("Приложение закрыто.");
+            default:
+                break;
         }
     }
 }

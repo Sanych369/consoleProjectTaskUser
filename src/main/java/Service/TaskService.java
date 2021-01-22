@@ -12,4 +12,6 @@ public interface TaskService {
     void deleteTask(String taskName);
 
     void assignTaskOnProject(String projectName, String taskName);
+
+    void printAllTasks();
 }

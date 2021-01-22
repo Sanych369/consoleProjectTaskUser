@@ -10,9 +10,6 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        for (int i = 0; i < userDAOImp.getAllUsers().size(); i++) {
-            System.out.println(userDAOImp.getAllUsers().get(i));
-        }
         return userDAOImp.getAllUsers();
     }
 
@@ -29,5 +26,16 @@ public class UserServiceImp implements UserService {
     @Override
     public void assignUserOnTask(String userFirstName, String userLastName, String taskName) {
         userDAOImp.assignUserOnTask(userFirstName, userLastName, taskName);
+    }
+
+    @Override
+    public void printAllUsers() {
+        if(userDAOImp.getAllUsers().size() != 0) {
+            for (int i = 0; i < userDAOImp.getAllUsers().size(); i++) {
+                System.out.println(userDAOImp.getAllUsers().get(i));
+            }
+        }else {
+            System.out.println("Список пользователей пуст!");
+        }
     }
 }

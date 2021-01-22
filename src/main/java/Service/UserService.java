@@ -12,4 +12,6 @@ public interface UserService {
     void deleteUser(String firstName, String lastName);
 
     void assignUserOnTask(String userFirstName, String userLastName, String taskName);
+
+    void printAllUsers();
 }
